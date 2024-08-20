@@ -1,5 +1,5 @@
 /* Assets */
-import Logotipo from "../assets/logotipo-descomplicando.png";
+import Logotipo from "../assets/logotipo-navbar-descomplicando.png";
 import BandeiraBrasil from "../assets/bandeira-brasil.png";
 import BandeiraEua from "../assets/bandeira-eua.png";
 import BandeiraEspanha from "../assets/bandeira-espanha.png";
@@ -18,7 +18,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,23 +25,49 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function NavigationBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    if (window.scrollY > lastScrollY) {
+      setShowNavbar(false); // Esconder a navbar ao rolar para baixo
+    } else {
+      setShowNavbar(true); // Mostrar a navbar ao rolar para cima
+    }
+    setLastScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", controlNavbar);
+
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY]);
 
   return (
-    <nav className="p-2 bg-black flex items center justify-around">
+    <nav
+      className={`fixed z-30 top-0 left-0 w-full p-2 bg-black flex items-center justify-around transition-transform duration-300 ${
+        showNavbar ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="flex items-center mr-40">
         <a href="/" className="cursor-pointer">
-          <img src={Logotipo} alt="Logotipo Descomplicando" className="w-12" />
+          <img src={Logotipo} alt="Logotipo Descomplicando" className="w-20" />
         </a>
       </div>
 
       <NavigationMenu>
         <NavigationMenuList className="flex space-x-10">
           <NavigationMenuItem>
-            <NavigationMenuLink href="#" className="text-white hover:text-gray-300 transition-all">
+            <NavigationMenuLink
+              href="#"
+              className="text-white hover:text-gray-300 transition-all"
+            >
               Sobre Nós
             </NavigationMenuLink>
           </NavigationMenuItem>
@@ -62,30 +87,36 @@ function NavigationBar() {
                   )}
                 </div>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-black border-none w-60 flex items-center flex-col p-6">
+              <DropdownMenuContent className="bg-black border-none w-[360px] flex items-center flex-col p-6">
                 <DropdownMenuItem asChild>
-                  <a className="text-white cursor-pointer text-lg">
+                  <a className="text-white cursor-pointer text-2xl">
                     Hemogasometria
                   </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a className="text-white cursor-pointer text-lg">Curso 2</a>
+                  <a className="text-white cursor-pointer text-2xl">Curso 2</a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a className="text-white cursor-pointer text-lg">Curso 3</a>
+                  <a className="text-white cursor-pointer text-2xl">Curso 3</a>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuLink href="/support" className="text-white hover:text-gray-300 transition-all">
+            <NavigationMenuLink
+              href="/support"
+              className="text-white hover:text-gray-300 transition-all"
+            >
               Suporte
             </NavigationMenuLink>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuLink href="#" className="text-white hover:text-gray-300 transition-all">
+            <NavigationMenuLink
+              href="#"
+              className="text-white hover:text-gray-300 transition-all"
+            >
               Conteúdo Extra
             </NavigationMenuLink>
           </NavigationMenuItem>
