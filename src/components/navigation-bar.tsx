@@ -25,12 +25,22 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { ChevronDown, ChevronUp } from "lucide-react";
+
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import i18n from "@/i18n/i18n";
+
 
 function NavigationBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  const { t } = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  }
 
   const controlNavbar = () => {
     if (window.scrollY > lastScrollY) {
@@ -68,7 +78,7 @@ function NavigationBar() {
               href="#"
               className="text-white hover:text-gray-300 transition-all"
             >
-              Sobre Nós
+              {t("aboutUs")}
             </NavigationMenuLink>
           </NavigationMenuItem>
 
@@ -79,7 +89,7 @@ function NavigationBar() {
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <div className="flex items-center gap-1">
-                  Cursos
+                  {t("courses")}
                   {isOpen ? (
                     <ChevronUp size={18} className="mt-1" />
                   ) : (
@@ -87,17 +97,21 @@ function NavigationBar() {
                   )}
                 </div>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-black border-none w-[360px] flex items-center flex-col p-6">
+              <DropdownMenuContent className="bg-black border-none w-[360px] flex items-center flex-col gap-2 p-6">
                 <DropdownMenuItem asChild>
-                  <a className="text-white cursor-pointer text-2xl">
+                  <a className="text-white cursor-pointer text-[23px]">
                     Hemogasometria
                   </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a className="text-white cursor-pointer text-2xl">Curso 2</a>
+                  <a className="text-white cursor-pointer text-[23px]">
+                    Curso 2
+                  </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a className="text-white cursor-pointer text-2xl">Curso 3</a>
+                  <a className="text-white cursor-pointer text-[23px]">
+                    Curso 3
+                  </a>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -108,7 +122,7 @@ function NavigationBar() {
               href="/support"
               className="text-white hover:text-gray-300 transition-all"
             >
-              Suporte
+              {t("support")}
             </NavigationMenuLink>
           </NavigationMenuItem>
 
@@ -117,21 +131,21 @@ function NavigationBar() {
               href="#"
               className="text-white hover:text-gray-300 transition-all"
             >
-              Conteúdo Extra
+              {t("extraContent")}
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
 
       <div className="flex items-center space-x-4">
-        <Select defaultValue="pt">
+        <Select defaultValue="pt" onValueChange={changeLanguage}>
           <SelectTrigger className="text-white bg-transparent border-none rounded w-36 p-3">
             <SelectValue placeholder="Selecione o Idioma" />
           </SelectTrigger>
           <SelectContent className="bg-black border-none">
             <SelectItem value="pt" className="cursor-pointer text-white">
               <div className="flex items-center space-x-2">
-                <p>Português</p>
+                <p>{t("language1")}</p>
                 <img
                   src={BandeiraBrasil}
                   alt="Bandeira do Brasil"
@@ -141,7 +155,7 @@ function NavigationBar() {
             </SelectItem>
             <SelectItem value="en" className="cursor-pointer text-white">
               <div className="flex items-center space-x-2">
-                <p>Inglês</p>
+                <p>{t("language2")}</p>
                 <img
                   src={BandeiraEua}
                   alt="Bandeira do Brasil"
@@ -151,7 +165,7 @@ function NavigationBar() {
             </SelectItem>
             <SelectItem value="es" className="cursor-pointer text-white">
               <div className="flex items-center space-x-2">
-                <p>Espanhol</p>
+                <p>{t("language3")}</p>
                 <img
                   src={BandeiraEspanha}
                   alt="Bandeira do Brasil"
@@ -162,7 +176,7 @@ function NavigationBar() {
           </SelectContent>
         </Select>
         <button className="px-2 py-2 bg-teal-950 text-white rounded hover:bg-teal-800 transition-all w-36 font-bold">
-          <p className="text-sm">Área do Aluno</p>
+          <p className="text-sm">{t("studentArea")}</p>
         </button>
       </div>
     </nav>
