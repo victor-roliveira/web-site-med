@@ -29,7 +29,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n/i18n";
-
+import { Link } from "react-router-dom";
 
 function NavigationBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +40,7 @@ function NavigationBar() {
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
-  }
+  };
 
   const controlNavbar = () => {
     if (window.scrollY > lastScrollY) {
@@ -77,8 +77,9 @@ function NavigationBar() {
             <NavigationMenuLink
               href="#"
               className="text-white hover:text-gray-300 transition-all"
+              asChild
             >
-              {t("aboutUs")}
+              <Link to="/about">{t("aboutUs")}</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
 
@@ -99,18 +100,13 @@ function NavigationBar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-black border-none w-[360px] flex items-center flex-col gap-2 p-6">
                 <DropdownMenuItem asChild>
-                  <a className="text-white cursor-pointer text-[23px]">
+                  <Link to="/cursos/hemogasometria" className="text-white cursor-pointer !text-[23px]">
                     Hemogasometria
-                  </a>
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <a className="text-white cursor-pointer text-[23px]">
-                    Curso 2
-                  </a>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <a className="text-white cursor-pointer text-[23px]">
-                    Curso 3
+                  <a className="text-white cursor-pointer !text-[23px]">
+                    Ventilação Mecânica
                   </a>
                 </DropdownMenuItem>
               </DropdownMenuContent>

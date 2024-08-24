@@ -1,27 +1,25 @@
+import NavigationBar from "./components/navigation-bar";
 import "./global.css";
 
-import NavigationBar from "./components/navigation-bar";
-
-import MainSection from "./components/main-section";
-import ModulesSection from "./components/modules-section";
-import ReasonsSection from "./components/reasons-section";
-import OpinionsSection from "./components/opinions-section";
-import Footer from "./components/footer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import CursoHemogasometria from "./pages/CursoHemogasometria";
 
 function App() {
   return (
     <>
-      <NavigationBar />
-
-      <MainSection />
-
-      <ModulesSection />
-
-      <ReasonsSection />
-
-      <OpinionsSection />
-
-      <Footer />
+      <Router>
+        <NavigationBar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route
+            path="/cursos/hemogasometria"
+            element={<CursoHemogasometria />}
+          />
+        </Routes>
+      </Router>
     </>
   );
 }
