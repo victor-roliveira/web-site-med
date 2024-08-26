@@ -5,7 +5,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "./ui/carousel";
+} from "../ui/carousel";
 
 import { useTranslation } from "react-i18next";
 

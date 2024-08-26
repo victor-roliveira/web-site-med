@@ -1,8 +1,8 @@
 import Footer from "@/components/footer";
-import MainSection from "@/components/main-section";
-import ModulesSection from "@/components/modules-section";
-import OpinionsSection from "@/components/opinions-section";
-import ReasonsSection from "@/components/reasons-section";
+import MainSection from "@/components/homepage-section/main-section";
+import ModulesSection from "@/components/homepage-section/modules-section";
+import OpinionsSection from "@/components/homepage-section/opinions-section";
+import ReasonsSection from "@/components/homepage-section/reasons-section";
 
 function HomePage() {
   return (

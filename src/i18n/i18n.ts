@@ -38,6 +38,24 @@ const resources = {
       privacyPolicies: "Privacy policies",
       socialNetworks: "Social Networks",
       shop: "Our Store",
+      subtitleCourseHemogasometria: "Be part of the group, come learn!",
+      titleHemogasometria: "Blood Gas Analysis",
+      textCourseHemogasometria:
+        "Video lessons, PDFs and question solutions are available directly from exams on all our modules. All this so that you don't fall behind and are always ahead.",
+      buttonSubscribe: "Subscribe",
+      titleResourcesHemogasometria: "Available Resources",
+      resourceFirstTitle: "Exclusive content",
+      resourceFirstSubtitle:
+        "6 modules, more than 40 hours of content and questions on the subject.",
+      resourceSecondTitle: "Videos",
+      resourceSecondSubtitle:
+        "Numerous classrooms are available for your access, attend and review as many times as necessary.",
+      resourceThirdTitle: "A.I Integrated",
+      resourceThirdSubtitle:
+        "Artificial Intelligence integrated into the platform to answer any questions about any subject!",
+        paymentType: "Card",
+        secondPaymentType: "Paid In Cash",
+        buttonSign: "Buy"
     },
   },
   pt: {
@@ -76,6 +94,24 @@ const resources = {
       privacyPolicies: "Políticas de privacidade",
       socialNetworks: "Redes Sociais",
       shop: "Nossa Loja",
+      subtitleCourseHemogasometria: "Faça parte do grupo, venha aprender!",
+      titleHemogasometria: "Hemogasometria",
+      textCourseHemogasometria:
+        "São disponibilizadas videoaulas, PDF's e resoluções de questões diretamente de provas sobre todos os nossos módulos. Tudo isso para que você não fique para trás e esteja sempre à frente.",
+      buttonSubscribe: "Inscreva-se",
+      titleResourcesHemogasometria: "Recursos Disponíveis",
+      resourceFirstTitle: "Conteúdo exclusivo",
+      resourceFirstSubtitle:
+        "6 módulos, mais de 40 horas de conteúdos e questões sobre o assunto.",
+      resourceSecondTitle: "Videoaulas",
+      resourceSecondSubtitle:
+        "Inúmeras aulas disponíveis para seu acesso, assista e revise quantas vezes precisar.",
+      resourceThirdTitle: "I.A Integrada",
+      resourceThirdSubtitle:
+        "Inteligência Artificial integrada na plataforma para retirar qualquer dúvida sobre qualquer assunto!",
+      paymentType: "Cartão",
+      secondPaymentType: "Á vista",
+      buttonSign: "Assinar"
     },
   },
   es: {
@@ -114,6 +150,24 @@ const resources = {
       privacyPolicies: "Políticas de privacidad",
       socialNetworks: "Redes Sociales",
       shop: "Nuestra Loja",
+      subtitleCourseHemogasometria: "¡Sé parte del grupo, ven a aprender!",
+      titleHemogasometria: "Análisis de Gases en Sangre",
+      textCourseHemogasometria:
+        "Lecciones en video, archivos PDF y resoluciones de preguntas están disponibles directamente de las pruebas en todos nuestros módulos. Todo esto para que no te quedes atrás y siempre vayas adelante.",
+      buttonSubscribe: "Inscribirse",
+      titleResourcesHemogasometria: "Recursos Disponibles",
+      resourceFirstTitle: "Contenido exclusivo",
+      resourceFirstSubtitle:
+        "6 módulos, más de 40 horas de contenidos y preguntas sobre el tema.",
+      resourceSecondTitle: "Videoaulas",
+      resourceSecondSubtitle:
+        "Inúmeras aulas disponibles para su acceso, asista y revise cuantas veces sea necesario.",
+      resourceThirdTitle: "I.A Integrado",
+      resourceThirdSubtitle:
+        "¡Inteligencia Artificial integrada en la plataforma para resolver cualquier duda sobre cualquier tema!",
+        paymentType: "Tarjeta",
+        secondPaymentType: "Pago al Contado",
+        buttonSign: "Firmar"
     },
   },
 };
