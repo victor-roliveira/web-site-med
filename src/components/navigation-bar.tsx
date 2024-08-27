@@ -24,7 +24,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Menu } from "lucide-react";
 
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -71,69 +71,74 @@ function NavigationBar() {
         </a>
       </div>
 
-      <NavigationMenu>
-        <NavigationMenuList className="flex space-x-10">
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              href="#"
-              className="text-white hover:text-gray-300 transition-all"
-              asChild
-            >
-              <Link to="/about">{t("aboutUs")}</Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <DropdownMenu onOpenChange={(open) => setIsOpen(open)}>
-              <DropdownMenuTrigger
-                className="text-white cursor-pointer outline-none hover:text-gray-300 transition-all"
-                onClick={() => setIsOpen(!isOpen)}
+      <div className="hidden sm:flex">
+        <NavigationMenu>
+          <NavigationMenuList className="flex space-x-10">
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                href="#"
+                className="text-white hover:text-gray-300 transition-all"
+                asChild
               >
-                <div className="flex items-center gap-1">
-                  {t("courses")}
-                  {isOpen ? (
-                    <ChevronUp size={18} className="mt-1" />
-                  ) : (
-                    <ChevronDown size={18} className="mt-1" />
-                  )}
-                </div>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-black border-none w-[360px] flex items-center flex-col gap-2 p-6">
-                <DropdownMenuItem asChild>
-                  <Link to="/cursos/hemogasometria" className="text-white cursor-pointer !text-[23px]">
-                    Hemogasometria
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <a className="text-white cursor-pointer !text-[23px]">
-                    Ventilação Mecânica
-                  </a>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </NavigationMenuItem>
+                <Link to="/about">{t("aboutUs")}</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              href="/support"
-              className="text-white hover:text-gray-300 transition-all"
-            >
-              {t("support")}
-            </NavigationMenuLink>
-          </NavigationMenuItem>
+            <NavigationMenuItem>
+              <DropdownMenu onOpenChange={(open) => setIsOpen(open)}>
+                <DropdownMenuTrigger
+                  className="text-white cursor-pointer outline-none hover:text-gray-300 transition-all"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <div className="flex items-center gap-1">
+                    {t("courses")}
+                    {isOpen ? (
+                      <ChevronUp size={18} className="mt-1" />
+                    ) : (
+                      <ChevronDown size={18} className="mt-1" />
+                    )}
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-black border-none w-[360px] flex items-center flex-col gap-2 p-6">
+                  <DropdownMenuItem asChild>
+                    <Link
+                      to="/cursos/hemogasometria"
+                      className="text-white cursor-pointer !text-[23px]"
+                    >
+                      Hemogasometria
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a className="text-white cursor-pointer !text-[23px]">
+                      Ventilação Mecânica
+                    </a>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              href="#"
-              className="text-white hover:text-gray-300 transition-all"
-            >
-              {t("extraContent")}
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                href="/support"
+                className="text-white hover:text-gray-300 transition-all"
+              >
+                {t("support")}
+              </NavigationMenuLink>
+            </NavigationMenuItem>
 
-      <div className="flex items-center space-x-4">
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                href="#"
+                className="text-white hover:text-gray-300 transition-all"
+              >
+                {t("extraContent")}
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </div>
+
+      <div className="hidden sm:flex items-center space-x-4">
         <Select defaultValue="pt" onValueChange={changeLanguage}>
           <SelectTrigger className="text-white bg-transparent border-none rounded w-36 p-3">
             <SelectValue placeholder="Selecione o Idioma" />
@@ -174,6 +179,107 @@ function NavigationBar() {
         <button className="px-2 py-2 bg-teal-950 text-white rounded hover:bg-teal-800 transition-all w-36 font-bold">
           <p className="text-sm">{t("studentArea")}</p>
         </button>
+      </div>
+
+      <div className="flex sm:hidden">
+        <DropdownMenu>
+          <DropdownMenuTrigger className="text-white cursor-pointer outline-none hover:text-gray-300 transition-all">
+            <Menu />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="bg-black border-none w-full flex flex-col gap-2 p-6 items-center !text-sm">
+            <DropdownMenuItem asChild>
+              <Link to="/about" className="text-white cursor-pointer">
+                {t("aboutUs")}
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <DropdownMenu onOpenChange={(open) => setIsOpen(open)}>
+                <DropdownMenuTrigger
+                  className="text-white cursor-pointer outline-none hover:text-gray-300 transition-all"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <div className="flex items-center gap-1">
+                    {t("courses")}
+                    {isOpen ? (
+                      <ChevronUp size={18} className="mt-1" />
+                    ) : (
+                      <ChevronDown size={18} className="mt-1" />
+                    )}
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-black border-none w-[300px] flex items-center flex-col gap-2 p-6">
+                  <DropdownMenuItem asChild>
+                    <Link
+                      to="/cursos/hemogasometria"
+                      className="text-white cursor-pointer !text-[18px]"
+                    >
+                      Hemogasometria
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a className="text-white cursor-pointer !text-[18px]">
+                      Ventilação Mecânica
+                    </a>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link to="/support" className="text-white cursor-pointer">
+                {t("support")}
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link to="/" className="text-white cursor-pointer">
+                {t("extraContent")}
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Select defaultValue="pt" onValueChange={changeLanguage}>
+                <SelectTrigger className="text-white bg-transparent border-none w-full p-3 hover:text-black">
+                  <SelectValue/>
+                </SelectTrigger>
+                <SelectContent className="bg-black border-none">
+                  <SelectItem value="pt" className="cursor-pointer text-white">
+                    <div className="flex items-center space-x-2">
+                      <p>{t("language1")}</p>
+                      <img
+                        src={BandeiraBrasil}
+                        alt="Bandeira do Brasil"
+                        className="w-6"
+                      />
+                    </div>
+                  </SelectItem>
+                  <SelectItem value="en" className="cursor-pointer text-white">
+                    <div className="flex items-center space-x-2">
+                      <p>{t("language2")}</p>
+                      <img
+                        src={BandeiraEua}
+                        alt="Bandeira do Brasil"
+                        className="w-6"
+                      />
+                    </div>
+                  </SelectItem>
+                  <SelectItem value="es" className="cursor-pointer text-white">
+                    <div className="flex items-center space-x-2">
+                      <p>{t("language3")}</p>
+                      <img
+                        src={BandeiraEspanha}
+                        alt="Bandeira do Brasil"
+                        className="w-6"
+                      />
+                    </div>
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <button className="px-2 py-2 bg-teal-950 text-white rounded hover:bg-teal-800 transition-all w-full font-bold flex justify-center">
+                <p className="text-sm">{t("studentArea")}</p>
+              </button>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </nav>
   );

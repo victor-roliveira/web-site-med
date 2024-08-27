@@ -22,21 +22,21 @@ function ModulesSection() {
 
   return (
     <section className="bg-[#5B5B58] h-[100vh] flex items-center flex-col">
-      <h2 className="text-4xl text-white pt-16 pb-8">
+      <h2 className="sm:text-4xl text-white sm:pt-16 sm:pb-8 text-2xl pt-10 pb-4">
         {t("titleModules")}
       </h2>
       <Button className="w-44 h-10 rounded-full bg-white border-none text-black hover:bg-black hover:text-white transition-all">
         {t("buttonModules")}
       </Button>
 
-      <Carousel className="w-[850px] py-8">
+      <Carousel className="sm:w-[850px] sm:py-8 py-10 w-[250px]">
         <CarouselContent>
           {images.map((image, index) => (
-            <CarouselItem key={index} className="lg:basis-1/3 cursor-pointer">
+            <CarouselItem key={index} className="md:basis-1/3 cursor-pointer basis-1/1">
               <img
                 src={image}
                 alt={`Módulo ${index + 1}`}
-                className="h-[450px] w-[400px] rounded-md"
+                className="sm:h-[450px] sm:w-[400px] rounded-md w-[250px] h-[400px]"
               />
             </CarouselItem>
           ))}
