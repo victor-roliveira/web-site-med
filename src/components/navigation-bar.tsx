@@ -1,5 +1,5 @@
 /* Assets */
-import Logotipo from "../assets/logotipo-navbar-descomplicando.png";
+import Logotipo from "../assets/logo-descomplicando.png";
 import BandeiraBrasil from "../assets/bandeira-brasil.png";
 import BandeiraEua from "../assets/bandeira-eua.png";
 import BandeiraEspanha from "../assets/bandeira-espanha.png";
@@ -65,7 +65,7 @@ function NavigationBar() {
         showNavbar ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="flex items-center mr-40">
+      <div className="mr-40">
         <a href="/" className="cursor-pointer">
           <img src={Logotipo} alt="Logotipo Descomplicando" className="w-20" />
         </a>
@@ -73,7 +73,7 @@ function NavigationBar() {
 
       <div className="hidden sm:flex">
         <NavigationMenu>
-          <NavigationMenuList className="flex space-x-10">
+          <NavigationMenuList className="space-x-10">
             <NavigationMenuItem>
               <NavigationMenuLink
                 href="#"
@@ -138,7 +138,7 @@ function NavigationBar() {
         </NavigationMenu>
       </div>
 
-      <div className="hidden sm:flex items-center space-x-4">
+      <div className="hidden sm:flex space-x-4">
         <Select defaultValue="pt" onValueChange={changeLanguage}>
           <SelectTrigger className="text-white bg-transparent border-none rounded w-36 p-3">
             <SelectValue placeholder="Selecione o Idioma" />

@@ -2,6 +2,8 @@ import NavigationBar from "./components/navigation-bar";
 import "./global.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import CursoHemogasometria from "./pages/CursoHemogasometria";
@@ -9,6 +11,7 @@ import CursoHemogasometria from "./pages/CursoHemogasometria";
 function App() {
   return (
     <>
+    <HelmetProvider>
       <Router>
         <NavigationBar />
         <Routes>
@@ -20,6 +23,7 @@ function App() {
           />
         </Routes>
       </Router>
+      </HelmetProvider>
     </>
   );
 }

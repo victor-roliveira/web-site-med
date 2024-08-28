@@ -1,4 +1,4 @@
-import Logotipo from "../assets/logotipo-descomplicando.png";
+import Logotipo from "../assets/logo-footer-descomplicando.png";
 
 import { useTranslation } from "react-i18next";
 
@@ -6,7 +6,7 @@ function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="flex w-full items-center justify-around py-12 px-12 bg-black">
+    <footer className="sm:flex w-full sm:items-center sm:justify-around sm:py-12 sm:px-12 text-center py-5 space-y-10 bg-black">
       <div className="flex flex-col items-center gap-2">
         <img
           src={Logotipo}
@@ -26,7 +26,7 @@ function Footer() {
         </a>
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col items-center gap-2">
         <h2 className="text-white font-bold">{t("socialNetworks")}</h2>
         <div className="flex flex-col gap-2">
           <a

@@ -1,4 +1,4 @@
-import CapaCursoHemogasometria from "../../assets/Captura de tela 2024-08-23 104934.png";
+import CapaCursoHemogasometria from "../../assets/Captura de tela 2024-08-15 121352.webp";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 
@@ -10,6 +10,7 @@ function MainSection() {
       <img
         src={CapaCursoHemogasometria}
         alt="Capa do Curso Hemogasometria"
+        loading="lazy"
         className="w-[300px] h-[400px] rounded-md"
       />
 

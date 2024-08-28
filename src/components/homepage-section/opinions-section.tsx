@@ -13,15 +13,15 @@ function OpinionsSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="bg-[#5B5B58] h-[100vh] flex items-center flex-col justify-center">
-      <h2 className="text-4xl text-white pb-8">
+    <section className="bg-[#5B5B58] sm:h-[100vh] flex items-center flex-col justify-center py-8">
+      <h2 className="sm:text-4xl text-white sm:pb-8 text-2xl">
         {t("titleOpinions")}
       </h2>
 
-      <Carousel className="w-[1000px] py-8">
+      <Carousel className="sm:w-[1000px] w-[250px] py-8">
         <CarouselContent className="">
-          <CarouselItem className="lg:basis-1/3 cursor-pointer">
-            <div className="w-[300px] h-[300px] rounded-md bg-black">
+          <CarouselItem className="md:basis-1/3 cursor-pointer basis-1/1">
+            <div className="sm:w-[300px] sm:h-[300px] w-[250px] rounded-md bg-black">
               <div className="flex flex-col items-start p-6 gap-2">
                 <CircleUserRound size={40} color="white" />
                 <h2 className="text-white font-bold text-xl">Aluno nome</h2>
@@ -35,7 +35,7 @@ function OpinionsSection() {
             </div>
           </CarouselItem>
           <CarouselItem className="lg:basis-1/3 cursor-pointer">
-            <div className="w-[300px] h-[300px] rounded-md bg-black">
+            <div className="sm:w-[300px] sm:h-[300px] w-[250px] rounded-md bg-black">
               <div className="flex flex-col items-start p-6 gap-2">
                 <CircleUserRound size={40} color="white" />
                 <h2 className="text-white font-bold text-xl">Aluno nome</h2>
@@ -49,7 +49,7 @@ function OpinionsSection() {
             </div>
           </CarouselItem>
           <CarouselItem className="lg:basis-1/3 cursor-pointer">
-            <div className="w-[300px] h-[300px] rounded-md bg-black">
+            <div className="sm:w-[300px] sm:h-[300px] w-[250px] rounded-md bg-black">
               <div className="flex flex-col items-start p-6 gap-2">
                 <CircleUserRound size={40} color="white" />
                 <h2 className="text-white font-bold text-xl">Aluno nome</h2>
@@ -63,7 +63,7 @@ function OpinionsSection() {
             </div>
           </CarouselItem>
           <CarouselItem className="lg:basis-1/3 cursor-pointer">
-            <div className="w-[300px] h-[300px] rounded-md bg-black">
+            <div className="sm:w-[300px] sm:h-[300px] w-[250px] rounded-md bg-black">
               <div className="flex flex-col items-start p-6 gap-2">
                 <CircleUserRound size={40} color="white" />
                 <h2 className="text-white font-bold text-xl">Aluno nome</h2>
@@ -77,7 +77,7 @@ function OpinionsSection() {
             </div>
           </CarouselItem>
           <CarouselItem className="lg:basis-1/3 cursor-pointer">
-            <div className="w-[300px] h-[300px] rounded-md bg-black">
+            <div className="sm:w-[300px] sm:h-[300px] w-[250px] rounded-md bg-black">
               <div className="flex flex-col items-start p-6 gap-2">
                 <CircleUserRound size={40} color="white" />
                 <h2 className="text-white font-bold text-xl">Aluno nome</h2>

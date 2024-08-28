@@ -6,10 +6,10 @@ function ReasonsSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="bg-black/90 h-[100vh] flex items-center flex-col">
-      <h2 className="text-4xl text-white pt-16 pb-8">{t("titleReasons")}</h2>
+    <section className="bg-black/90 sm:h-[100vh] flex items-center flex-col pb-8">
+      <h2 className="sm:text-4xl text-white sm:pt-16 sm:pb-8 text-2xl text-center pt-8 pb-8">{t("titleReasons")}</h2>
 
-      <div className="flex items-center justify-center flex-wrap w-[1000px] gap-10">
+      <div className="flex items-center justify-center flex-wrap sm:w-[1000px] gap-10">
         <div className="flex items-start flex-col w-[300px] gap-2">
           <Users size={30} color="white" />
           <h2 className="text-lg text-white font-bold">{t("subTitleR1")}</h2>
