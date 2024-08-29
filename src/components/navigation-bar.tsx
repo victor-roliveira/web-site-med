@@ -8,7 +8,6 @@ import BandeiraEspanha from "../assets/bandeira-espanha.png";
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
 } from "./ui/navigation-menu";
 import {
@@ -26,30 +25,30 @@ import {
 } from "./ui/dropdown-menu";
 import { ChevronDown, ChevronUp, Menu } from "lucide-react";
 
-import { useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n/i18n";
 import { Link } from "react-router-dom";
 
-function NavigationBar() {
+const NavigationBar = memo(function NavigationBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const { t } = useTranslation();
 
-  const changeLanguage = (lng: string) => {
+  const changeLanguage = useCallback((lng: string) => {
     i18n.changeLanguage(lng);
-  };
+  }, []);
 
-  const controlNavbar = () => {
+  const controlNavbar = useCallback(() => {
     if (window.scrollY > lastScrollY) {
-      setShowNavbar(false); // Esconder a navbar ao rolar para baixo
+      setShowNavbar(false);
     } else {
-      setShowNavbar(true); // Mostrar a navbar ao rolar para cima
+      setShowNavbar(true);
     }
     setLastScrollY(window.scrollY);
-  };
+  }, [lastScrollY]);
 
   useEffect(() => {
     window.addEventListener("scroll", controlNavbar);
@@ -57,7 +56,7 @@ function NavigationBar() {
     return () => {
       window.removeEventListener("scroll", controlNavbar);
     };
-  }, [lastScrollY]);
+  }, [controlNavbar]);
 
   return (
     <nav
@@ -66,22 +65,26 @@ function NavigationBar() {
       }`}
     >
       <div className="mr-40">
-        <a href="/" className="cursor-pointer">
-          <img src={Logotipo} alt="Logotipo Descomplicando" className="w-20" />
-        </a>
+        <Link to="/" className="cursor-pointer">
+          <img
+            src={Logotipo}
+            alt="Logotipo Descomplicando"
+            className="w-20"
+            loading="lazy"
+          />
+        </Link>
       </div>
 
       <div className="hidden sm:flex">
         <NavigationMenu>
           <NavigationMenuList className="space-x-10">
             <NavigationMenuItem>
-              <NavigationMenuLink
-                href="#"
+              <Link
+                to="/about"
                 className="text-white hover:text-gray-300 transition-all"
-                asChild
               >
-                <Link to="/about">{t("aboutUs")}</Link>
-              </NavigationMenuLink>
+                {t("aboutUs")}
+              </Link>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
@@ -109,30 +112,33 @@ function NavigationBar() {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <a className="text-white cursor-pointer !text-[23px]">
+                    <Link
+                      to="#"
+                      className="text-white cursor-pointer !text-[23px]"
+                    >
                       Ventilação Mecânica
-                    </a>
+                    </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuLink
-                href="/support"
+              <Link
+                to="/support"
                 className="text-white hover:text-gray-300 transition-all"
               >
                 {t("support")}
-              </NavigationMenuLink>
+              </Link>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuLink
-                href="#"
+              <Link
+                to="#"
                 className="text-white hover:text-gray-300 transition-all"
               >
                 {t("extraContent")}
-              </NavigationMenuLink>
+              </Link>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
@@ -177,7 +183,13 @@ function NavigationBar() {
           </SelectContent>
         </Select>
         <button className="px-2 py-2 bg-teal-950 text-white rounded hover:bg-teal-800 transition-all w-36 font-bold">
-          <p className="text-sm">{t("studentArea")}</p>
+          <a
+            href="https://members.descomplicandomedicina.com.br/login"
+            className="text-sm"
+            target="_blank"
+          >
+            {t("studentArea")}
+          </a>
         </button>
       </div>
 
@@ -217,9 +229,12 @@ function NavigationBar() {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <a className="text-white cursor-pointer !text-[18px]">
+                    <Link
+                      to="#"
+                      className="text-white cursor-pointer !text-[18px]"
+                    >
                       Ventilação Mecânica
-                    </a>
+                    </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -237,7 +252,7 @@ function NavigationBar() {
             <DropdownMenuItem>
               <Select defaultValue="pt" onValueChange={changeLanguage}>
                 <SelectTrigger className="text-white bg-transparent border-none w-full p-3 hover:text-black">
-                  <SelectValue/>
+                  <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-black border-none">
                   <SelectItem value="pt" className="cursor-pointer text-white">
@@ -275,7 +290,13 @@ function NavigationBar() {
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <button className="px-2 py-2 bg-teal-950 text-white rounded hover:bg-teal-800 transition-all w-full font-bold flex justify-center">
-                <p className="text-sm">{t("studentArea")}</p>
+                <a
+                  href="https://members.descomplicandomedicina.com.br/login"
+                  className="text-sm"
+                  target="_blank"
+                >
+                  {t("studentArea")}
+                </a>
               </button>
             </DropdownMenuItem>
           </DropdownMenuContent>
@@ -283,6 +304,6 @@ function NavigationBar() {
       </div>
     </nav>
   );
-}
+});
 
 export default NavigationBar;

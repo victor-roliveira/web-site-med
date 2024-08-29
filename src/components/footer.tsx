@@ -1,8 +1,9 @@
+import { memo } from "react";
 import Logotipo from "../assets/logo-footer-descomplicando.png";
 
 import { useTranslation } from "react-i18next";
 
-function Footer() {
+const Footer = memo(function Footer() {
   const { t } = useTranslation();
 
   return (
@@ -12,6 +13,7 @@ function Footer() {
           src={Logotipo}
           alt="Logotipo Descomplicando"
           className="w-[80px]"
+          loading="lazy"
         />
         <p className="text-white">© {t("rights")}</p>
       </div>
@@ -58,6 +60,6 @@ function Footer() {
       </div>
     </footer>
   );
-}
+});
 
 export default Footer;
