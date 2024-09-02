@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import { Helmet } from "react-helmet-async";
 
 function AboutPage() {
@@ -29,12 +30,14 @@ function AboutPage() {
           <p>CERTIFICAÇÕES</p>
         </div>
 
-        <div>
-            <div className="flex items-center justify-center bg-black text-white w-[400px] h-[400px] rounded-md">
+        <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center bg-black text-white w-[350px] h-[400px] rounded-md">
                 FOTO CLEIBER
             </div>
         </div>
       </section>
+
+      <Footer />
     </>
   );
 }

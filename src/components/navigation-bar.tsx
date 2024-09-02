@@ -23,40 +23,99 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { ChevronDown, ChevronUp, Menu } from "lucide-react";
-
+import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
 import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n/i18n";
 import { Link } from "react-router-dom";
 
+interface DropdownMenuItem {
+  to: string;
+  label: string;
+}
+
+interface SelectItem {
+  value: string;
+  label: string;
+  imgSrc: string;
+}
+
 const NavigationBar = memo(function NavigationBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    localStorage.getItem("language") || "pt"
+  );
 
   const { t } = useTranslation();
 
+  useEffect(() => {
+    i18n.changeLanguage(selectedLanguage);
+  }, [selectedLanguage]);
+
   const changeLanguage = useCallback((lng: string) => {
-    i18n.changeLanguage(lng);
+    setSelectedLanguage(lng);
+    localStorage.setItem("language", lng);
   }, []);
 
   const controlNavbar = useCallback(() => {
-    if (window.scrollY > lastScrollY) {
-      setShowNavbar(false);
-    } else {
-      setShowNavbar(true);
-    }
-    setLastScrollY(window.scrollY);
+    const currentScrollY = window.scrollY;
+    setShowNavbar(!(currentScrollY > lastScrollY && currentScrollY > 50));
+    setLastScrollY(currentScrollY);
   }, [lastScrollY]);
 
   useEffect(() => {
     window.addEventListener("scroll", controlNavbar);
-
-    return () => {
-      window.removeEventListener("scroll", controlNavbar);
-    };
+    return () => window.removeEventListener("scroll", controlNavbar);
   }, [controlNavbar]);
+
+  const renderDropdownMenuItems = useCallback(
+    (items: DropdownMenuItem[]) =>
+      items.map(({ to, label }) => (
+        <DropdownMenuItem asChild key={to}>
+          <Link to={to} className="text-white cursor-pointer !text-[20px]">
+            {label}
+          </Link>
+        </DropdownMenuItem>
+      )),
+    []
+  );
+
+  const renderSelectItems = useCallback(
+    (items: SelectItem[]) =>
+      items.map(({ value, label, imgSrc }) => (
+        <SelectItem
+          value={value}
+          key={value}
+          className="cursor-pointer text-white"
+        >
+          <div className="flex items-center space-x-2">
+            <p>{label}</p>
+            <img src={imgSrc} alt={label} className="w-6" />
+          </div>
+        </SelectItem>
+      )),
+    []
+  );
+
+  const menuItems = [
+    { to: "/about", label: t("aboutUs") },
+    { to: "/support", label: t("support") },
+    { to: "#", label: t("extraContent") },
+  ];
+
+  const coursesItems = [
+    { to: "/cursos/hemogasometria", label: "Hemogasometria" },
+    { to: "#", label: "Ventilação Mecânica" },
+  ];
+
+  const languageItems = [
+    { value: "pt", label: t("language1"), imgSrc: BandeiraBrasil },
+    { value: "en", label: t("language2"), imgSrc: BandeiraEua },
+    { value: "es", label: t("language3"), imgSrc: BandeiraEspanha },
+  ];
 
   return (
     <nav
@@ -78,17 +137,19 @@ const NavigationBar = memo(function NavigationBar() {
       <div className="hidden sm:flex">
         <NavigationMenu>
           <NavigationMenuList className="space-x-10">
-            <NavigationMenuItem>
-              <Link
-                to="/about"
-                className="text-white hover:text-gray-300 transition-all"
-              >
-                {t("aboutUs")}
-              </Link>
-            </NavigationMenuItem>
+            {menuItems.map(({ to, label }) => (
+              <NavigationMenuItem key={to}>
+                <Link
+                  to={to}
+                  className="text-white hover:text-gray-300 transition-all"
+                >
+                  {label}
+                </Link>
+              </NavigationMenuItem>
+            ))}
 
             <NavigationMenuItem>
-              <DropdownMenu onOpenChange={(open) => setIsOpen(open)}>
+              <DropdownMenu onOpenChange={setIsOpen}>
                 <DropdownMenuTrigger
                   className="text-white cursor-pointer outline-none hover:text-gray-300 transition-all"
                   onClick={() => setIsOpen(!isOpen)}
@@ -103,83 +164,21 @@ const NavigationBar = memo(function NavigationBar() {
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-black border-none w-[360px] flex items-center flex-col gap-2 p-6">
-                  <DropdownMenuItem asChild>
-                    <Link
-                      to="/cursos/hemogasometria"
-                      className="text-white cursor-pointer !text-[23px]"
-                    >
-                      Hemogasometria
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link
-                      to="#"
-                      className="text-white cursor-pointer !text-[23px]"
-                    >
-                      Ventilação Mecânica
-                    </Link>
-                  </DropdownMenuItem>
+                  {renderDropdownMenuItems(coursesItems)}
                 </DropdownMenuContent>
               </DropdownMenu>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Link
-                to="/support"
-                className="text-white hover:text-gray-300 transition-all"
-              >
-                {t("support")}
-              </Link>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Link
-                to="#"
-                className="text-white hover:text-gray-300 transition-all"
-              >
-                {t("extraContent")}
-              </Link>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
       </div>
 
       <div className="hidden sm:flex space-x-4">
-        <Select defaultValue="pt" onValueChange={changeLanguage}>
+        <Select value={selectedLanguage} onValueChange={changeLanguage}>
           <SelectTrigger className="text-white bg-transparent border-none rounded w-36 p-3">
             <SelectValue placeholder="Selecione o Idioma" />
           </SelectTrigger>
           <SelectContent className="bg-black border-none">
-            <SelectItem value="pt" className="cursor-pointer text-white">
-              <div className="flex items-center space-x-2">
-                <p>{t("language1")}</p>
-                <img
-                  src={BandeiraBrasil}
-                  alt="Bandeira do Brasil"
-                  className="w-6"
-                />
-              </div>
-            </SelectItem>
-            <SelectItem value="en" className="cursor-pointer text-white">
-              <div className="flex items-center space-x-2">
-                <p>{t("language2")}</p>
-                <img
-                  src={BandeiraEua}
-                  alt="Bandeira do Brasil"
-                  className="w-6"
-                />
-              </div>
-            </SelectItem>
-            <SelectItem value="es" className="cursor-pointer text-white">
-              <div className="flex items-center space-x-2">
-                <p>{t("language3")}</p>
-                <img
-                  src={BandeiraEspanha}
-                  alt="Bandeira do Brasil"
-                  className="w-6"
-                />
-              </div>
-            </SelectItem>
+            {renderSelectItems(languageItems)}
           </SelectContent>
         </Select>
         <button className="px-2 py-2 bg-teal-950 text-white rounded hover:bg-teal-800 transition-all w-36 font-bold">
@@ -194,18 +193,20 @@ const NavigationBar = memo(function NavigationBar() {
       </div>
 
       <div className="flex sm:hidden">
-        <DropdownMenu>
+        <DropdownMenu onOpenChange={setMenuOpen}>
           <DropdownMenuTrigger className="text-white cursor-pointer outline-none hover:text-gray-300 transition-all">
-            <Menu />
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-black border-none w-full flex flex-col gap-2 p-6 items-center !text-sm">
-            <DropdownMenuItem asChild>
-              <Link to="/about" className="text-white cursor-pointer">
-                {t("aboutUs")}
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <DropdownMenu onOpenChange={(open) => setIsOpen(open)}>
+            {menuItems.map(({ to, label }) => (
+              <DropdownMenuItem asChild key={to}>
+                <Link to={to} className="text-white cursor-pointer">
+                  {label}
+                </Link>
+              </DropdownMenuItem>
+            ))}
+            <DropdownMenuItem>
+              <DropdownMenu onOpenChange={setIsOpen}>
                 <DropdownMenuTrigger
                   className="text-white cursor-pointer outline-none hover:text-gray-300 transition-all"
                   onClick={() => setIsOpen(!isOpen)}
@@ -219,72 +220,18 @@ const NavigationBar = memo(function NavigationBar() {
                     )}
                   </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-black border-none w-[300px] flex items-center flex-col gap-2 p-6">
-                  <DropdownMenuItem asChild>
-                    <Link
-                      to="/cursos/hemogasometria"
-                      className="text-white cursor-pointer !text-[18px]"
-                    >
-                      Hemogasometria
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link
-                      to="#"
-                      className="text-white cursor-pointer !text-[18px]"
-                    >
-                      Ventilação Mecânica
-                    </Link>
-                  </DropdownMenuItem>
+                <DropdownMenuContent className="bg-black border-none w-[260px] flex items-center flex-col gap-2 p-2">
+                  {renderDropdownMenuItems(coursesItems)}
                 </DropdownMenuContent>
               </DropdownMenu>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link to="/support" className="text-white cursor-pointer">
-                {t("support")}
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link to="/" className="text-white cursor-pointer">
-                {t("extraContent")}
-              </Link>
-            </DropdownMenuItem>
             <DropdownMenuItem>
-              <Select defaultValue="pt" onValueChange={changeLanguage}>
+              <Select value={selectedLanguage} onValueChange={changeLanguage}>
                 <SelectTrigger className="text-white bg-transparent border-none w-full p-3 hover:text-black">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-black border-none">
-                  <SelectItem value="pt" className="cursor-pointer text-white">
-                    <div className="flex items-center space-x-2">
-                      <p>{t("language1")}</p>
-                      <img
-                        src={BandeiraBrasil}
-                        alt="Bandeira do Brasil"
-                        className="w-6"
-                      />
-                    </div>
-                  </SelectItem>
-                  <SelectItem value="en" className="cursor-pointer text-white">
-                    <div className="flex items-center space-x-2">
-                      <p>{t("language2")}</p>
-                      <img
-                        src={BandeiraEua}
-                        alt="Bandeira do Brasil"
-                        className="w-6"
-                      />
-                    </div>
-                  </SelectItem>
-                  <SelectItem value="es" className="cursor-pointer text-white">
-                    <div className="flex items-center space-x-2">
-                      <p>{t("language3")}</p>
-                      <img
-                        src={BandeiraEspanha}
-                        alt="Bandeira do Brasil"
-                        className="w-6"
-                      />
-                    </div>
-                  </SelectItem>
+                  {renderSelectItems(languageItems)}
                 </SelectContent>
               </Select>
             </DropdownMenuItem>

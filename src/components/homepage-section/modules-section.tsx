@@ -14,10 +14,11 @@ import Modulo4 from "../../assets/Captura-de-tela-2024-08-19-190512.webp";
 import Modulo5 from "../../assets/Captura-de-tela-2024-08-19-190529_1.webp";
 
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
-function ModulesSection() {
-  const images = [Modulo1, Modulo2, Modulo3, Modulo4, Modulo5];
+const images = [Modulo1, Modulo2, Modulo3, Modulo4, Modulo5];
 
+function ModulesSection(): JSX.Element {
   const { t } = useTranslation();
 
   return (
@@ -26,13 +27,16 @@ function ModulesSection() {
         {t("titleModules")}
       </h2>
       <Button className="w-44 h-10 rounded-full bg-white border-none text-black hover:bg-black hover:text-white transition-all">
-        {t("buttonModules")}
+        <Link to="/cursos/hemogasometria">{t("buttonModules")}</Link>
       </Button>
 
       <Carousel className="sm:w-[850px] sm:py-8 py-10 w-[250px]">
         <CarouselContent>
           {images.map((image, index) => (
-            <CarouselItem key={index} className="md:basis-1/3 cursor-pointer basis-1/1">
+            <CarouselItem
+              key={index}
+              className="md:basis-1/3 cursor-pointer basis-1/1"
+            >
               <img
                 src={image}
                 alt={`Módulo ${index + 1}`}
@@ -42,8 +46,8 @@ function ModulesSection() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="hover:bg-black hover:text-white hover:border-black transition-all"/>
-        <CarouselNext className="hover:bg-black hover:text-white hover:border-black transition-all"/>
+        <CarouselPrevious className="hover:bg-black hover:text-white hover:border-black transition-all" />
+        <CarouselNext className="hover:bg-black hover:text-white hover:border-black transition-all" />
       </Carousel>
     </section>
   );

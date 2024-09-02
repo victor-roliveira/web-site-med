@@ -6,21 +6,24 @@ function MainSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="bg-black/90 h-[100vh] flex items-center justify-center gap-44">
-      <img
-        src={CapaCursoHemogasometria}
-        alt="Capa do Curso Hemogasometria"
-        loading="lazy"
-        className="w-[300px] h-[400px] rounded-md"
-      />
-
+    <section className="bg-black/90 sm:h-[100vh] sm:flex items-center justify-center gap-44 pt-24 pb-12">
+      <div className="flex justify-center pb-8">
+        <img
+          src={CapaCursoHemogasometria}
+          alt="Capa do Curso Hemogasometria"
+          loading="lazy"
+          className="w-[300px] h-[400px] rounded-md"
+        />
+      </div>
       <div className="flex flex-col items-center gap-4 w-[400px] text-white">
-        <p className="text-white/65 text-lg">
+        <p className="text-white/65 sm:text-lg">
           {t("subtitleCourseHemogasometria")}
         </p>
-        <h2 className="text-3xl font-bold pb-2">{t("titleHemogasometria")}</h2>
+        <h2 className="sm:text-3xl text-xl font-bold">
+          {t("titleHemogasometria")}
+        </h2>
 
-        <p className="text-white/65 text-xl text-center">
+        <p className="text-white/65 sm:text-xl text-center">
           {t("textCourseHemogasometria")}
         </p>
         <Button className="w-44 h-10 rounded-full bg-transparent border-2 border-zinc-500 hover:bg-white hover:text-black hover:border-white transition-all">

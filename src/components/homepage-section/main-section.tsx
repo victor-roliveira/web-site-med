@@ -8,7 +8,7 @@ function MainSection() {
       <h1 className="text-2xl w-[300px] text-white pt-20 pb-20 sm:text-4xl sm:w-full flex justify-center text-center">
         {t("title")}
       </h1>
-      <div className="bg-black w-full h-[300px] flex items-center justify-center sm:w-[900px] sm:h-[400px]">
+      <div className="bg-black w-[390px] h-[300px] flex items-center justify-center sm:w-[900px] sm:h-[400px]">
         <p className="text-white text-5xl">VÍDEO</p>
       </div>
     </section>
