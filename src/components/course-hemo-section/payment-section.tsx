@@ -6,7 +6,7 @@ function PaymentSection() {
 
   return (
     <section className="bg-black/90 h-[100vh] flex items-center flex-col justify-center">
-      <h2 className="text-4xl text-white pb-8">Assine já</h2>
+      <h2 className="text-4xl text-white pb-8">{t("titlePaymentSection")}</h2>
 
       <div className="bg-black w-[340px] h-[400px] flex flex-col items-center gap-8 p-6 rounded-md">
         <h2 className="text-[22px] text-white font-medium">
