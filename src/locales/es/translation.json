@@ -43,5 +43,7 @@
   "titlePaymentSection": "Suscríbete ahora",
   "paymentType": "Tarjeta",
   "secondPaymentType": "Pago al Contado",
-  "buttonSign": "Firmar"
+  "buttonSign": "Firmar",
+  "titleAboutSection": "¿Quiénes somos?",
+  "presentationText": "Bienvenidos al grupo Descomplicando. Antes de emprender este viaje, te presentaremos a nuestros profesionales..."
 }

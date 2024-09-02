@@ -42,5 +42,7 @@
   "titlePaymentSection": "Assine já",
   "paymentType": "Cartão",
   "secondPaymentType": "Á vista",
-  "buttonSign": "Assinar"
+  "buttonSign": "Assinar",
+  "titleAboutSection": "Quem somos?",
+  "presentationText": "Bem-vindo ao grupo Descomplicando. Antes de embarcar nessa jornada, iremos te apresentar nossos profissionais..."
 }

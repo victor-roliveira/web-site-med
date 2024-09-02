@@ -1,7 +1,11 @@
 import Footer from "@/components/footer";
 import { Helmet } from "react-helmet-async";
 
+import { useTranslation } from "react-i18next";
+
 function AboutPage() {
+  const { t } = useTranslation();
+
   return (
     <>
      <Helmet>
@@ -20,12 +24,11 @@ function AboutPage() {
       <section className="bg-black/90 h-[100vh] sm:flex items-center justify-center gap-44">
         <div className="flex flex-col items-start gap-4 sm:w-[400px] w-full text-white pt-20 pb-5 px-11">
           <div>
-            <h2 className="sm:text-4xl font-bold sm:pb-2 text-2xl">Quem somos?</h2>
+            <h2 className="sm:text-4xl font-bold sm:pb-2 text-2xl">{t("titleAboutSection")}</h2>
             <div className="border-b-2 bg-white w-[140px]"></div>
           </div>
           <p className="text-white/65 text-xl">
-            Bem-vindo ao grupo Descomplicando. Antes de embarcar nessa jornada,
-            iremos te apresentar nossos profissionais...
+            {t("presentationText")}
           </p>
           <p>CERTIFICAÇÕES</p>
         </div>

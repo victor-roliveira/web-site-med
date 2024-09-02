@@ -42,5 +42,7 @@
   "titlePaymentSection": "Subscribe now",
   "paymentType": "Card",
   "secondPaymentType": "Paid In Cash",
-  "buttonSign": "Buy"
+  "buttonSign": "Buy",
+  "titleAboutSection": "Who are we?",
+   "presentationText": "Welcome to the Descomplicando group. Before undertaking this trip, we will introduce you to our professionals..."
 }
