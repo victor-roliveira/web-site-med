@@ -1,4 +1,3 @@
-import Footer from "@/components/footer";
 import { Helmet } from "react-helmet-async";
 
 import { useTranslation } from "react-i18next";
@@ -39,8 +38,6 @@ function AboutPage() {
             </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

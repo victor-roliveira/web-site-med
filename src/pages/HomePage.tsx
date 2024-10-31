@@ -1,4 +1,3 @@
-import Footer from "@/components/footer";
 import MainSection from "@/components/homepage-section/main-section";
 import ModulesSection from "@/components/homepage-section/modules-section";
 import OpinionsSection from "@/components/homepage-section/opinions-section";
@@ -28,8 +27,6 @@ function HomePage() {
       <ReasonsSection />
 
       <OpinionsSection />
-
-      <Footer />
     </>
   );
 }

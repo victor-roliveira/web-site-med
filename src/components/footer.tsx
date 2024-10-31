@@ -1,5 +1,8 @@
 import { memo } from "react";
 import Logotipo from "../assets/logo-footer-descomplicando.png";
+import instagramIcon from "../assets/instagram-icon.svg";
+import whatsappIcon from "../assets/whatsapp-icon.svg";
+import storeIcon from "../assets/store-icon.svg";
 
 import { useTranslation } from "react-i18next";
 
@@ -36,7 +39,7 @@ const Footer = memo(function Footer() {
             target="_blank"
             className="text-white/65 flex items-center gap-2 hover:underline"
           >
-            <i className="fa-brands fa-instagram"></i>
+            <img src={instagramIcon} alt="Ícone Instagram" />
             Instagram
           </a>
 
@@ -44,7 +47,7 @@ const Footer = memo(function Footer() {
             href="#"
             className="text-white/65 flex items-center gap-2 hover:underline"
           >
-            <i className="fa-brands fa-whatsapp"></i>
+             <img src={whatsappIcon} alt="Ícone Whatsapp" />
             Whatsapp
           </a>
 
@@ -53,7 +56,7 @@ const Footer = memo(function Footer() {
             target="_blank"
             className="text-white/65 flex items-center gap-2 hover:underline"
           >
-            <i className="fa-solid fa-store"></i>
+             <img src={storeIcon} alt="Ícone Store" />
             {t("shop")}
           </a>
         </div>
