@@ -9,38 +9,22 @@ function AboutPage() {
     <>
       <Helmet>
         <title>Descomplicando | Sobre Nós</title>
-        <meta
-          name="description"
-          content="Explore os nossos profissionais e conheça mais sobre a nossa empresa"
-        />
-        <meta
-          name="keywords"
-          content="sobre, empresa, informação, profissionais"
-        />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="/about" />
+
+        <meta name="description" content="Conheça os profissionais da empresa Descomplicando e conheça mais sobre a empresa" />
+        <meta name="keywords" content="Curso de medicina, profissionais descomplicando, conhecer a empresa descomplicando, empresa de curso para medicina" />
 
         <meta property="og:title" content="Descomplicando | Sobre Nós" />
-        <meta
-          property="og:description"
-          content="Explore os nossos profissionais e conheça mais sobre a nossa empresa"
-        />
+        <meta property="og:description" content="Conheça os profissionais da empresa Descomplicando e conheça mais sobre a empresa" />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://www.descomplicando.com.br/about"
-        />
+        <meta property="og:url" content="https://www.descomplicando.com.br" />
         <meta property="og:image" content="/logo-descomplicando.png" />
-        <meta property="og:locale" content="pt_BR" />
-        <meta property="og:site_name" content="Descomplicando" />
 
-        <meta name="twitter:card" content="/logo-descomplicando.png" />
-        <meta name="twitter:title" content="Descomplicando: Sobre Nós" />
-        <meta
-          name="twitter:description"
-          content="Explore os nossos profissionais e conheça mais sobre a nossa empresa"
-        />
-        <meta name="twitter:image" content="/logo-descomplicando" />
+        <meta name="twitter:card" content="/logo-descomplicando" />
+        <meta name="twitter:title" content="Descomplicando | Sobre Nós" />
+        <meta name="twitter:description" content="Conheça os profissionais da empresa Descomplicando e conheça mais sobre a empresa" />
+        <meta name="twitter:image" content="/logo-descomplicando.png" />
+
+        <link rel="canonical" href="https://www.descomplicando.com.br" />
       </Helmet>
 
       <section className="bg-black/90 h-[100vh] sm:flex items-center justify-center gap-44">

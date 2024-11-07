@@ -7,37 +7,25 @@ function CursoHemogasometria() {
   return (
     <>
       <Helmet>
-        <title>Cursos | Hemogasometria</title>
-        <meta
-          name="description"
-          content="Bem vindo ao curso de Hemogasometria."
-        />
-        <meta
-          name="keywords"
-          content="hemogasometria, curso, aprendizado, educação"
-        />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="/" />
+        <title>Descomplicando | Hemogasometria</title>
 
-        <meta property="og:title" content="Curso | Hemogasometria" />
-        <meta
-          property="og:description"
-          content="Curso de Hemogasometria, aprenda tudo sobre o assunto com a maior qualidade do mercado"
-        />
+        <meta name="description" content="Curso de Hemogasometria, liderado e aplicado por especialistas na área, feito para estudantes e profissionais de saúde." />
+        <meta name="keywords" content="Curso de medicina, curso de hemogasometria, aprender sobre hemogasometria" />
+
+        <meta property="og:title" content="Descomplicando | Curso de Hemogasometria" />
+        <meta property="og:description" content="Curso de Hemogasometria, liderado e aplicado por especialistas na área, feito para estudantes e profissionais de saúde." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.descomplicando.com.br/" />
-        <meta property="og:image" content="/logo-descomplicando" />
-        <meta property="og:locale" content="pt_BR" />
-        <meta property="og:site_name" content="Descomplicando" />
+        <meta property="og:url" content="https://www.descomplicando.com.br" />
+        <meta property="og:image" content="/logo-descomplicando.png" />
 
         <meta name="twitter:card" content="/logo-descomplicando" />
-        <meta name="twitter:title" content="Curso: Hemogasometria" />
-        <meta
-          name="twitter:description"
-          content="Explore nosso curso de Hemogasometria, utilize materias de alta qualidade e aprovação por parte dos assinantes"
-        />
-        <meta name="twitter:image" content="/logo-descomplicando" />
+        <meta name="twitter:title" content="Descomplicando | Curso de Hemogasometria" />
+        <meta name="twitter:description" content="Curso de Hemogasometria, liderado e aplicado por especialistas na área, feito para estudantes e profissionais de saúde." />
+        <meta name="twitter:image" content="/logo-descomplicando.png" />
+
+        <link rel="canonical" href="https://www.descomplicando.com.br" />
       </Helmet>
+      
       <MainSection />
 
       <ResourcesSection />
