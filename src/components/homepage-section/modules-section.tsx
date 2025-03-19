@@ -27,7 +27,7 @@ function ModulesSection(): JSX.Element {
       <h2 className="sm:text-4xl text-black sm:pt-16 sm:pb-8 text-2xl pt-10 pb-4">
         {t("titleModules")}
       </h2>
-      <Button className="w-44 h-10 rounded-full bg-white border-none text-black hover:bg-black hover:text-white transition-all">
+      <Button className="w-44 h-10 rounded-full bg-black border-none text-white hover:bg-black/85 transition-all">
         <Link to="/cursos/hemogasometria">{t("buttonModules")}</Link>
       </Button>
 
