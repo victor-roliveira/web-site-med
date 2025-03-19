@@ -1,5 +1,5 @@
 /* Assets */
-import Logotipo from "../../public/logo-descomplicando.png";
+import Logotipo from "/logo-descomplicando.png";
 import BandeiraBrasil from "../assets/bandeira-brasil.png";
 import BandeiraEua from "../assets/bandeira-eua.png";
 import BandeiraEspanha from "../assets/bandeira-espanha.png";
